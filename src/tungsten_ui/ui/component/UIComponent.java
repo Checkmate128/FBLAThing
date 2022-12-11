@@ -1,6 +1,8 @@
 package tungsten_ui.ui.component;
 
+import tungsten_ui.ui.ScreenManager;
 import tungsten_ui.ui.action.UIAction;
+import tungsten_ui.util.MouseInput;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -72,10 +74,17 @@ public class UIComponent {
 	}
 
 	public void render(Graphics2D g, int offsetX, int offsetY) {
-		g.setColor(bodyColor);
-		g.drawRect(x + offsetX, y + offsetY, width, height);
-		g.setColor(borderColor);
-		g.fillRect(x + offsetX, y + offsetY, width, height);
+		if(isClickable && MouseInput.x > x + offsetX && MouseInput.x < x + offsetX + width && MouseInput.y - 26 > y + offsetY && MouseInput.y - 26 < y + offsetY + height) {
+			g.setColor(itemHoverBodyColor);
+			g.drawRect(x + offsetX, y + offsetY, width, height);
+			g.setColor(itemHoverBorderColor);
+			g.fillRect(x + offsetX, y + offsetY, width, height);
+		} else {
+			g.setColor(bodyColor);
+			g.drawRect(x + offsetX, y + offsetY, width, height);
+			g.setColor(borderColor);
+			g.fillRect(x + offsetX, y + offsetY, width, height);
+		}
 		if (selected) {
 			g.setColor(Color.BLACK);
 			g.drawRect(x + offsetX, y + offsetY, width, height);

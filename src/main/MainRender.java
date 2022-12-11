@@ -3,10 +3,8 @@ package main;
 import tungsten_ui.ui.Screen;
 import tungsten_ui.ui.ScreenManager;
 import tungsten_ui.ui.action.UIActionChangeProperty;
-import tungsten_ui.ui.component.UICheckBoxComponent;
-import tungsten_ui.ui.component.UIRectangleComponent;
-import tungsten_ui.ui.component.UITextComponent;
-import tungsten_ui.ui.component.UITextFieldComponent;
+import tungsten_ui.ui.action.UIActionChangeScreen;
+import tungsten_ui.ui.component.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,24 +32,22 @@ public class MainRender extends JPanel implements ActionListener {
 	public void makeUI() {
 		Screen homeScreen = new Screen();
 		UIRectangleComponent background = new UIRectangleComponent(0, 0, 640, 640, new Color(200, 200, 0));
-		UITextComponent titleText = new UITextComponent(40, 20, 560, 80, 50, "TungstenUI Test");
-		titleText.addHoverAction(new UIActionChangeProperty(UIActionChangeProperty.BORDER_COLOR, new Color(0, 0, 0)));
-		titleText.addUnHoverAction(new UIActionChangeProperty(UIActionChangeProperty.BORDER_COLOR, new Color(0, 0, 0, 0)));
-		UITextFieldComponent textField = new UITextFieldComponent(40, 200, 560, 80, 50);
-		UICheckBoxComponent checkBox1 = new UICheckBoxComponent(40, 320, 40, 40);
-		UICheckBoxComponent checkBox2 = new UICheckBoxComponent(40, 400, 120, 120);
-		
+		UITextComponent titleText = new UITextComponent(40, 20, 560, 80, 50, "FBLAThing");
+		UIButtonComponent newFileButton = new UIButtonComponent(40, 210, 560, 105, "New File");
+		newFileButton.addClickAction(new UIActionChangeScreen(1));
+		UIButtonComponent openFileButton = new UIButtonComponent(40, 415, 560, 105, "Open File");
+		openFileButton.addClickAction(new UIActionChangeScreen(1));
+
 		homeScreen.addComponent(background);
 		homeScreen.addComponent(titleText);
-		homeScreen.addComponent(textField);
-		homeScreen.addComponent(checkBox1);
-		homeScreen.addComponent(checkBox2);
+		homeScreen.addComponent(newFileButton);
+		homeScreen.addComponent(openFileButton);
 		ScreenManager.addScreen(homeScreen);
 
-		Screen gameScreen = new Screen();
-		ScreenManager.addScreen(homeScreen);
+		Screen mainMenuScreen = new Screen();
+		ScreenManager.addScreen(mainMenuScreen);
 
-		ScreenManager.setActiveScreen(1);
+		ScreenManager.setActiveScreen(0);
 	}
 
 	@Override

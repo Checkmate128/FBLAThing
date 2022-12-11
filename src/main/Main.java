@@ -9,8 +9,8 @@ public class Main extends JFrame {
 
 	public static KeyboardInput ki = new KeyboardInput();
 	public static MouseInput mi = new MouseInput();
-	public static int WINDOW_WIDTH = 1400;
-	public static int WINDOW_HEIGHT = 800;
+	public static int WINDOW_WIDTH = 640;
+	public static int WINDOW_HEIGHT = 640;
 	private static JFrame window;
 
 	public static void main(String[] args) {
