@@ -14,6 +14,7 @@ public class UIComponent {
 	protected int y;
 	protected int width;
 	protected int height;
+	protected boolean isChecked = false;
 
 	protected boolean selected = false;
 	protected boolean isSelectable = false;
@@ -132,6 +133,10 @@ public class UIComponent {
 	public void setText(String text) {
 		this.text = text;
 	}
+
+	public void setIsChecked(boolean isChecked) {
+		this.isChecked = isChecked;
+	}
 	
 	public int getX() {
 		return x;
@@ -175,6 +180,10 @@ public class UIComponent {
 
 	public boolean isSelectable() {
 		return isSelectable;
+	}
+
+	public boolean isChecked() {
+		return isChecked;
 	}
 
 }

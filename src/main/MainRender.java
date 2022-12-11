@@ -3,6 +3,7 @@ package main;
 import tungsten_ui.ui.Screen;
 import tungsten_ui.ui.ScreenManager;
 import tungsten_ui.ui.action.UIActionChangeProperty;
+import tungsten_ui.ui.component.UICheckBoxComponent;
 import tungsten_ui.ui.component.UIRectangleComponent;
 import tungsten_ui.ui.component.UITextComponent;
 import tungsten_ui.ui.component.UITextFieldComponent;
@@ -37,10 +38,14 @@ public class MainRender extends JPanel implements ActionListener {
 		titleText.addHoverAction(new UIActionChangeProperty(UIActionChangeProperty.BORDER_COLOR, new Color(0, 0, 0)));
 		titleText.addUnHoverAction(new UIActionChangeProperty(UIActionChangeProperty.BORDER_COLOR, new Color(0, 0, 0, 0)));
 		UITextFieldComponent textField = new UITextFieldComponent(40, 200, 560, 80, 50);
+		UICheckBoxComponent checkBox1 = new UICheckBoxComponent(40, 320, 40, 40);
+		UICheckBoxComponent checkBox2 = new UICheckBoxComponent(40, 400, 120, 120);
 		
 		homeScreen.addComponent(background);
 		homeScreen.addComponent(titleText);
 		homeScreen.addComponent(textField);
+		homeScreen.addComponent(checkBox1);
+		homeScreen.addComponent(checkBox2);
 		ScreenManager.addScreen(homeScreen);
 
 		Screen gameScreen = new Screen();

@@ -20,7 +20,7 @@ public class Main extends JFrame {
 		window.add(new MainRender());
 		window.setVisible(true);
 		window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		window.setTitle("Studying Software");
+		window.setTitle("FBLAThing");
 		window.setResizable(false);
 
 		window.addKeyListener(ki);

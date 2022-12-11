@@ -49,7 +49,7 @@ public class TextRenderer {
 				}
 			}
 			int drawX;
-			int drawY = y + (lines.size() * (height - metrics.getHeight()) / 2) + metrics.getAscent();
+			int drawY = y - ((lines.size() * metrics.getHeight()) + metrics.getAscent() + height) / 2;
 			g.setFont(font);
 			if(lines.size() > 0) {
 				for (int i = 0; i < lines.size(); i++) {
