@@ -45,6 +45,16 @@ public class MainRender extends JPanel implements ActionListener {
 		ScreenManager.addScreen(homeScreen);
 
 		Screen mainMenuScreen = new Screen();
+		UITextComponent mainMenuTitleText = new UITextComponent(40, 20, 560, 80, 50, "Main Menu");
+		UIButtonComponent editDatabaseButton = new UIButtonComponent(40, 145, 560, 120, "Edit Database");
+		UIButtonComponent viewReportButton = new UIButtonComponent(40, 310, 560, 120, "View Report");
+		UIButtonComponent pickWinnersButton = new UIButtonComponent(40, 475, 560, 120, "Pick Winners");
+
+		mainMenuScreen.addComponent(background);
+		mainMenuScreen.addComponent(mainMenuTitleText);
+		mainMenuScreen.addComponent(editDatabaseButton);
+		mainMenuScreen.addComponent(viewReportButton);
+		mainMenuScreen.addComponent(pickWinnersButton);
 		ScreenManager.addScreen(mainMenuScreen);
 
 		ScreenManager.setActiveScreen(0);
