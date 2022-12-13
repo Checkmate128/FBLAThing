@@ -55,24 +55,22 @@ public class UIDropdownBoxComponent extends UICompoundComponent {
 
 					if (elements.get(i).isClickable && MouseInput.x >= finalOffsetX && MouseInput.x < elements.get(i).width + finalOffsetX && MouseInput.y - 24 >= finalOffsetY + totalHeight && MouseInput.y - 24 < elements.get(i).height + finalOffsetY + totalHeight) {
 						if (MouseInput.leftClick && ScreenManager.isReadyForAction()) {
-
+							selectedElement = i;
 							for (int j = 0; j < elements.get(i).clickActions.size(); j++) {
 								isFocused = false;
-								selectedElement = i;
 								elements.get(i).clickActions.get(j).run();
 								ScreenManager.resetActionDelay();
 							}
 						}
-
+						hoveredElement = i;
 						for (int j = 0; j < elements.get(i).hoverActions.size(); j++) {
-							hoveredElement = i;
 							elements.get(i).hoverActions.get(j).run();
 							
 						}
 					} else {
 
 						for (int j = 0; j < elements.get(i).unHoverActions.size(); j++) {
-							hoveredElement = i;
+
 							elements.get(i).unHoverActions.get(j).run();
 							
 						}

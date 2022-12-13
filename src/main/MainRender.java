@@ -47,6 +47,7 @@ public class MainRender extends JPanel implements ActionListener {
 		Screen mainMenuScreen = new Screen();
 		UITextComponent mainMenuTitleText = new UITextComponent(40, 20, 560, 80, 50, "Main Menu");
 		UIButtonComponent editDatabaseButton = new UIButtonComponent(40, 145, 560, 120, "Edit Database");
+		editDatabaseButton.addClickAction(new UIActionChangeScreen(2));
 		UIButtonComponent viewReportButton = new UIButtonComponent(40, 310, 560, 120, "View Report");
 		UIButtonComponent pickWinnersButton = new UIButtonComponent(40, 475, 560, 120, "Pick Winners");
 
@@ -56,6 +57,30 @@ public class MainRender extends JPanel implements ActionListener {
 		mainMenuScreen.addComponent(viewReportButton);
 		mainMenuScreen.addComponent(pickWinnersButton);
 		ScreenManager.addScreen(mainMenuScreen);
+
+		Screen editDatabaseScreen = new Screen();
+		UITextComponent editDatabaseTitle = new UITextComponent(40, 20, 560, 80, 50, "Edit Database");
+		UIDropdownBoxComponent activitySelector = new UIDropdownBoxComponent(160, 160, 320, 40, 11);
+		activitySelector.setBorderColor(Color.BLACK);
+		activitySelector.setItemHoverBodyColor(new Color(40, 40, 40, 40));
+		activitySelector.setItemHoverBorderColor(new Color(40, 40, 40, 40));
+		UICompoundComponent activitySelectorItem0 = new UICompoundComponent(0, 0, 320, 40, 2);
+		activitySelectorItem0.addComponent(new UIRectangleComponent(0, 0, 320, 40, Color.WHITE));
+		activitySelectorItem0.addComponent(new UITextComponent(0, 0, 320, 40, 30, "Edit Students"));
+		activitySelector.addComponent(activitySelectorItem0);
+		UICompoundComponent activitySelectorItem1 = new UICompoundComponent(0, 0, 320, 40, 2);
+		activitySelectorItem1.addComponent(new UIRectangleComponent(0, 0, 320, 40, Color.WHITE));
+		activitySelectorItem1.addComponent(new UITextComponent(0, 0, 320, 40, 30, "Tennis Match"));
+		activitySelector.addComponent(activitySelectorItem1);
+		UICompoundComponent activitySelectorItem2 = new UICompoundComponent(0, 0, 320, 40, 2);
+		activitySelectorItem2.addComponent(new UIRectangleComponent(0, 0, 320, 40, Color.WHITE));
+		activitySelectorItem2.addComponent(new UITextComponent(0, 0, 320, 40, 30, "Football Game"));
+		activitySelector.addComponent(activitySelectorItem2);
+
+		editDatabaseScreen.addComponent(background);
+		editDatabaseScreen.addComponent(editDatabaseTitle);
+		editDatabaseScreen.addComponent(activitySelector);
+		ScreenManager.addScreen(editDatabaseScreen);
 
 		ScreenManager.setActiveScreen(0);
 	}

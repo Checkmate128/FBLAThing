@@ -12,7 +12,7 @@ public class UITextComponent extends UIComponent {
 		this.text = text;
 		borderColor = new Color(0, 0, 0, 0);
 		bodyColor = new Color(0, 0, 0, 0);
-		textColor = Color.WHITE;
+		textColor = Color.BLACK;
 	}
 
 	public UITextComponent(int x, int y, int width, int height, int fontSize, Color textColor, String text) {
