@@ -43,7 +43,7 @@ public class UITextFieldComponent extends UIComponent{
             g.drawRect(x + offsetX, y + offsetY, width, height);
         }
         g.setColor(textColor);
-        TextRenderer.drawCenteredString(g, x + offsetX, y + offsetY, width, height, text, g.getFont(), true);
+        TextRenderer.drawCenteredString(g, x + offsetX, y + offsetY, width, height, text, g.getFont(), false);
 
         //Typing Code
         if(selected && KeyboardInput.typing && KeyboardInput.canBeTyped(KeyboardInput.currentCode)) {

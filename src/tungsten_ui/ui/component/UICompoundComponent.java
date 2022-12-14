@@ -35,6 +35,15 @@ public class UICompoundComponent extends UIComponent {
 		bodyColor = new Color(0, 0, 0, 0);
 	}
 
+	public UICompoundComponent(int x, int y) {
+		super(x, y);
+		this.x = x;
+		this.y = y;
+		isCompound = true;
+		borderColor = new Color(0, 0, 0, 0);
+		bodyColor = new Color(0, 0, 0, 0);
+	}
+
 	public void addComponent(UIComponent uic) {
 		if(isCompound) {
 			elements.add(uic);
@@ -45,6 +54,8 @@ public class UICompoundComponent extends UIComponent {
 	
 	@Override
 	public void render(Graphics2D g, int offsetX, int offsetY) {
+		tick();
+
 		hoveredElement = -1;
 
 		for (int i = 0; i < elements.size(); i++) {
@@ -60,21 +71,24 @@ public class UICompoundComponent extends UIComponent {
 
 				if (elements.get(i).isClickable && MouseInput.x >= elements.get(i).x + finalOffsetX && MouseInput.x < elements.get(i).x + elements.get(i).width + finalOffsetX && MouseInput.y - 24 >= elements.get(i).y + finalOffsetY && MouseInput.y - 24 < elements.get(i).y + elements.get(i).height + finalOffsetY) {
 					if (MouseInput.leftClick && ScreenManager.isReadyForAction()) {
-
+						selectedElement = i;
+						ScreenManager.deselectAll();
+						ScreenManager.resetActionDelay();
+						elements.get(i).setSelected(true);
 						for (int j = 0; j < elements.get(i).clickActions.size(); j++) {
-							selectedElement = i;
+
 							elements.get(i).clickActions.get(j).run();
 							ScreenManager.resetActionDelay();
 						}
 					}
-
+					hoveredElement = i;
 					for (int j = 0; j < elements.get(i).hoverActions.size(); j++) {
-						hoveredElement = i;					
+
 						elements.get(i).hoverActions.get(j).run();
 					}
 				} else {
 
-					for (int j = 0; j < elements.get(i).clickActions.size(); j++) {					
+					for (int j = 0; j < elements.get(i).unHoverActions.size(); j++) {
 						elements.get(i).unHoverActions.get(j).run();
 					}
 				}
@@ -105,6 +119,10 @@ public class UICompoundComponent extends UIComponent {
 				g.drawRect(x + offsetX, y + offsetY, width, height);
 			}
 		}
+	}
+
+	public void tick() {
+
 	}
 
 	private void checkElements() {

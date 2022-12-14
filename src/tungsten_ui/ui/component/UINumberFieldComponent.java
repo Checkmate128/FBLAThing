@@ -45,8 +45,8 @@ public class UINumberFieldComponent extends UIComponent {
         decreaseButton.render(g, offsetX + x, offsetY + y);
         numberDisplay.render(g, offsetX + x, offsetY + y);
         g.setColor(Color.WHITE);
-        g.fillPolygon(new Polygon(new int[]{increaseButton.x + x + offsetX + 2, increaseButton.x + x + offsetX + increaseButton.width / 2, increaseButton.x + x + offsetX + increaseButton.width - 2}, new int[]{increaseButton.y + increaseButton.height + y + offsetY - 2, increaseButton.y + y + offsetY + 2, increaseButton.y + increaseButton.height + y + offsetY}, 3));
-        g.fillPolygon(new Polygon(new int[]{decreaseButton.x + x + offsetX + 2, decreaseButton.x + x + offsetX + decreaseButton.width / 2, decreaseButton.x + x + offsetX + decreaseButton.width - 2}, new int[]{decreaseButton.y + decreaseButton.height + y + offsetY - 2, decreaseButton.y + y + offsetY + 2, decreaseButton.y + decreaseButton.height + y + offsetY}, 3));
+        g.fillPolygon(new Polygon(new int[]{increaseButton.x + x + offsetX + 2, increaseButton.x + x + offsetX + increaseButton.width / 2, increaseButton.x + x + offsetX + increaseButton.width - 2}, new int[]{increaseButton.y + increaseButton.height + y + offsetY - 2, increaseButton.y + y + offsetY + 2, increaseButton.y + increaseButton.height + y + offsetY - 2}, 3));
+        g.fillPolygon(new Polygon(new int[]{decreaseButton.x + x + offsetX + 2, decreaseButton.x + x + offsetX + decreaseButton.width / 2, decreaseButton.x + x + offsetX + decreaseButton.width - 2}, new int[]{decreaseButton.y + decreaseButton.height + y + offsetY - 2, decreaseButton.y + y + offsetY + 2, decreaseButton.y + decreaseButton.height + y + offsetY - 2}, 3));
 
         if(MouseInput.x > increaseButton.x + x + offsetX && MouseInput.x < increaseButton.x + x + offsetX + increaseButton.width && MouseInput.y - 26 > increaseButton.y + y + offsetY && MouseInput.y - 26 < increaseButton.y + y + offsetY + increaseButton.height && MouseInput.leftClick && ScreenManager.isReadyForAction()) {
             if(number < max) {
