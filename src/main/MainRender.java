@@ -101,14 +101,17 @@ public class MainRender extends JPanel implements ActionListener {
 		UICompoundComponent activitySelectorItem0 = new UICompoundComponent(0, 0, 320, 40, 2);
 		activitySelectorItem0.addComponent(new UIRectangleComponent(0, 0, 320, 40, Color.WHITE));
 		activitySelectorItem0.addComponent(new UITextComponent(0, 0, 320, 40, 30, "Edit Students"));
+		activitySelectorItem0.addClickAction(new UIActionReloadDatabase(0));
 		activitySelector.addComponent(activitySelectorItem0);
 		UICompoundComponent activitySelectorItem1 = new UICompoundComponent(0, 0, 320, 40, 2);
 		activitySelectorItem1.addComponent(new UIRectangleComponent(0, 0, 320, 40, Color.WHITE));
 		activitySelectorItem1.addComponent(new UITextComponent(0, 0, 320, 40, 30, "Tennis Match"));
+		activitySelectorItem1.addClickAction(new UIActionReloadDatabase(0));
 		activitySelector.addComponent(activitySelectorItem1);
 		UICompoundComponent activitySelectorItem2 = new UICompoundComponent(0, 0, 320, 40, 2);
 		activitySelectorItem2.addComponent(new UIRectangleComponent(0, 0, 320, 40, Color.WHITE));
 		activitySelectorItem2.addComponent(new UITextComponent(0, 0, 320, 40, 30, "Football Game"));
+		activitySelectorItem2.addClickAction(new UIActionReloadDatabase(0));
 		activitySelector.addComponent(activitySelectorItem2);
 
 		UIButtonComponent newStudentButton = new UIButtonComponent(80, 160 + (StudentManager.getStudents().size() % 5) * 70, 480, 60, "Add Student");
@@ -133,16 +136,16 @@ public class MainRender extends JPanel implements ActionListener {
 
 		editDatabaseScreen.addComponent(new UIRectangleComponent(0, 0, 640, 640, new Color(200, 200, 0)));
 		editDatabaseScreen.addComponent(editDatabaseTitle);
-		editDatabaseScreen.addComponent(activitySelector);
 		for(int i = 0; i < StudentManager.getStudents().size(); i++) {
 			if(i - MainRender.databasePage * 5 <= 5 && i - MainRender.databasePage * 5 >= 0) {
-				editDatabaseScreen.addComponent(new UIStudentComponent(0, 160 + (i % 5) * 70, StudentManager.getStudents().get(i)));
+				editDatabaseScreen.addComponent(new UIStudentComponent(0, 160 + (i % 5) * 70, StudentManager.getStudents().get(i), activitySelector.getSelectedElement() == 0));
 			}
 		}
 		editDatabaseScreen.addComponent(newStudentButton);
 		editDatabaseScreen.addComponent(pageDisplayLabel);
 		editDatabaseScreen.addComponent(pageBackButton);
 		editDatabaseScreen.addComponent(pageForwardButton);
+		editDatabaseScreen.addComponent(activitySelector);
 		ScreenManager.screens.set(2, editDatabaseScreen);
 	}
 

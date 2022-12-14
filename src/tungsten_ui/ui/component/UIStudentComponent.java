@@ -15,7 +15,7 @@ public class UIStudentComponent extends UICompoundComponent {
     private UICheckBoxComponent activityCheckBox;
     private Student student;
 
-    public UIStudentComponent(int x, int y, Student s) {
+    public UIStudentComponent(int x, int y, Student s, boolean isEditing) {
         super(x, y);
         this.student = s;
         firstNameField = new UITextFieldComponent(40, 0, 200, 60, 20);
@@ -28,9 +28,16 @@ public class UIStudentComponent extends UICompoundComponent {
         deleteButton.addClickAction(new UIActionDeleteStudent(student));
         deleteButton.addClickAction(new UIActionReloadDatabase(0));
         studentNameLabel = new UITextComponent(40, 0, 460, 60, 20, s.getFirstName() + " " + s.getLastName());
-        studentNameLabel.setVisible(false);
         activityCheckBox = new UICheckBoxComponent(560, 10, 40, 40);
-        activityCheckBox.setVisible(false);
+        if(isEditing) {
+            studentNameLabel.setVisible(false);
+            activityCheckBox.setVisible(false);
+        } else {
+            firstNameField.setVisible(false);
+            lastNameField.setVisible(false);
+            gradeNumberField.setVisible(false);
+            deleteButton.setVisible(false);
+        }
         addComponent(firstNameField);
         addComponent(lastNameField);
         addComponent(gradeNumberField);
